@@ -1,0 +1,11 @@
+class Node:
+    Distance = []
+    IsActive = True
+    DistanceTo = 0
+
+# input =
+# num of nodes (eg 5), distances (ab = 3 \n cd = 5 \n 
+
+nodes = []
+CNode = 0
+NNodeDis = min(nodes[CNode].Distance)
