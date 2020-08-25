@@ -60,7 +60,7 @@ def dijkstra(noden): (noden = node number, 0-indexed)
     (
         min_point = 'inf'
     )
-    
+
     for every node connected to the current node
     (
         for point in cnode.distances:
@@ -82,7 +82,7 @@ def dijkstra(noden): (noden = node number, 0-indexed)
     (
         newdist = [distances[node] for node in range(len(distances)) if nodes[node].isactive] 
         nnode = min(newdist)
-        if nnode = distances[-1]:
+        if nnode = len(distances)-1:
             print("done")
     )
 """
