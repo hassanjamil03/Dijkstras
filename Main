@@ -1,19 +1,19 @@
-
 class Node:
     def __init__(self, Distances):
         self.Distances = Distances
         self.IsActive = True
         self.DistanceTo = 0
 
+
 nodes = []
 Unodes = []
+
 
 def Dijkstras(CNode):
     CNode = nodes[CNode]
     if len(CNode.distances) == 0 and len(nodes) > 0: Dijkstras(Unodes[-1])
     NNodeDis = min([point[0] for point in CNode.Distances])
     NNode = nodes[NNodeDis]
-
 
 
 """
@@ -39,56 +39,50 @@ nodes = [a, b, c, r, f, w, g, h]; all items in this list are node objects
 nodes[x].distances = [(1, 7), (3, 5), (2, 3)]; 1, 2, and 3 represent distance from node at index x;  7, 5, and 3 represent
     nodes with that number
 
-nodes[x].dist = distance of node x from the first node
+//**nodes[x].dist = distance of node x from the first node. first/starting node will always have a dist of 0**// 
+    obselete. use distances list instead
 
 nodes[x].isactive = true or false value representing whether the node is still active (ie has not been marked a visited 
     node yet)
 
 distances = [0, 5, 13, 25, 32]; all items in this list represent distance from starting node to whichever node the index 
     corresponds with, eg distances[1] means the distance from the starting node (node 0) to node 1 (which in this case 
-    is 5). distances has length equal to number of nodes present and initially starts out with all elements equal to 'inf'  
- 
+    is 5). distances has length equal to number of nodes present and initially starts out with all elements excpet first
+    equal to 'inf'  
 
-def dijkstra(noden): (noden = node number)
+
+def dijkstra(noden): (noden = node number, 0-indexed)
     get current node object 
     (
         cnode = node[noden]
     )
-    
+
     (
         min_point = 'inf'
     )
     
-    for point in cnode.distances:
+    for every node connected to the current node
+    (
+        for point in cnode.distances:
+    )
         update distance to node 
         (
-            distance = cnode.dist + point[0]
+            distance = distance[noden] + point[0]
             node = nodes[point[1]]
-            if node.dist == 'inf' or distance < node.dist: 
-                node.dist = distance
+            node_distance = distance[point[1]]
+            if node_distance == 'inf' or distance < node_distance: 
+                node_distance = distance
         )
-         
-        see which (distance,node) point is nearest 
-        (
-            if min_point == 'inf' or min_point[0] > point:
-                min_point = point
-        )
-        
-    get nearest node object, nnode = nearest node
+
+    mark cnode as inactive 
     (
-        nnode = nodes[min_point[1]]
+        cnode.isactive = false
     )
-    
-    cnode.distances.pop(nearest node)
-    move current node to used nodes list
-    if unused nodes list > 0 and len(cnode.distances) == 0:
-        dijkstra(usednodes[-2])
-    else: dijkstra(number of nearest node)
-
-
-
-
-
-
-
+    run djikstras again this time on the node nearest to the first node
+    (
+        newdist = [distances[node] for node in range(len(distances)) if nodes[node].isactive] 
+        nnode = min(newdist)
+        if nnode = distances[-1]:
+            print("done")
+    )
 """
