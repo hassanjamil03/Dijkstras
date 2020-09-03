@@ -1,20 +1,12 @@
 class Node:
-    def __init__(self, Distances):
-        self.Distances = Distances
+    def __init__(self, distances):
+        self.distances = distances
         self.IsActive = True
         self.DistanceTo = 0
 
 
 nodes = []
-Unodes = []
-
-
-def Dijkstras(CNode):
-    CNode = nodes[CNode]
-    if len(CNode.distances) == 0 and len(nodes) > 0: Dijkstras(Unodes[-1])
-    NNodeDis = min([point[0] for point in CNode.Distances])
-    NNode = nodes[NNodeDis]
-
+distances = []
 
 """
 example: 
@@ -56,6 +48,11 @@ def dijkstra(noden): (noden = node number, 0-indexed)
     (
         cnode = node[noden]
     )
+    
+    if cnode is the end node then dijkstras is done
+    (
+        if cnode = len(distances)-1: break 
+    )
 
     (
         min_point = 'inf'
@@ -78,11 +75,28 @@ def dijkstra(noden): (noden = node number, 0-indexed)
     (
         cnode.isactive = false
     )
-    run djikstras again this time on the node nearest to the first node
+    run djikstras again this time on the node nearest to node 1 that is active
     (
         newdist = [distances[node] for node in range(len(distances)) if nodes[node].isactive] 
         nnode = min(newdist)
-        if nnode = len(distances)-1:
-            print("done")
+        dikjstras(distances.index(nnoode))
     )
 """
+
+
+def dijkstra(noden):
+    cnode = nodes[noden]
+
+    if cnode == len(distances) - 1: return distances
+
+    for point in cnode.distances:
+        distance = distance[noden] + point[0]
+        node = nodes[point[1]]
+        node_distance = distance[point[1]]
+        if node_distance == 'inf' or distance < node_distance:
+            node_distance = distance
+
+    cnode.isactive = False
+    newdist = [distances[node] for node in range(len(distances)) if nodes[node].isactive]
+    nnode = min(newdist)
+    dijkstra(distances.index(nnode))
